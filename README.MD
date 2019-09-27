@@ -32,4 +32,11 @@ incase it throws error that one of the following mentioned cdr already exists ad
 
 >helm install stable/prometheus-operator --namespace monitoring --name prometheus --set  prometheusOperator.createCustomResource=false
 
+# Step3
+Install hle;m charts for Go application
+
+To install go application 
+>helm install k8s/go-server/helm-chart
+
+
 
