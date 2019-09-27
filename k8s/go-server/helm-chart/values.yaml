@@ -10,7 +10,7 @@ image:
 
 service:
   name: go-app-k8s
-  type: LoadBalancer
+  type: NodePort
   externalPort: 3000
   internalPort: 3000
 

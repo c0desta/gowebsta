@@ -4,7 +4,9 @@ LABEL maintainer="tarunanand14@gmail.com"
 
 RUN go get -u github.com/gorilla/mux
 RUN go get github.com/lucasb-eyer/go-colorful
-
+RUN go get github.com/prometheus/client_golang/prometheus
+RUN go get github.com/prometheus/client_golang/prometheus/promauto
+RUN go get github.com/prometheus/client_golang/prometheus/promhttp
 
 EXPOSE 3000
 
