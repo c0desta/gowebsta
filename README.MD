@@ -1,6 +1,8 @@
 # Hex to RGB Convertor 
 A web application written in GO which can be easily deployed on kubernetes cluster with custom metric monitoring using prometheus and grafana
 
+![Preview of Grafana](grafana2.jpg?raw=true "Title")
+
 # Please read notes at the end of the file incase you face any issues
 
 # prerequisite 
