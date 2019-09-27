@@ -1,6 +1,8 @@
 # Hex to RGB Convertor 
 A web application written in GO which can be easily deployed on kubernetes cluster with custom metric monitoring using prometheus and grafana
 
+# Please read notes at the end of the file incase you face any issues
+
 # prerequisite 
 Version >=0.18.0 of the Prometheus Operator requires a Kubernetes cluster of version >=1.8.0. If you are just starting out with the Prometheus Operator, it is highly recommended to use the latest version.
 
@@ -33,10 +35,45 @@ incase it throws error that one of the following mentioned cdr already exists ad
 >helm install stable/prometheus-operator --namespace monitoring --name prometheus --set  prometheusOperator.createCustomResource=false
 
 # Step3
+
+Build Docker image replace username with your dockerhub username
+
+>docker build k8s/ -t username/hex2rgb:latest
+
+push image to docker
+>docker push username/hex2rgb:latest
+
+
+# Step4
 Install hle;m charts for Go application
 
 To install go application 
 >helm install k8s/go-server/helm-chart
 
+# Step5
+
+Open service/deployment on local There are two ways to do it. Using kubectl port-forward pod port:port or make a Service which expose the deployment 
+
+example 1
+get list of pods
+>kubectl get pods
+`knobby-kiwi-go-app-k8s-67df99c5cf-8sg82       1/1     Running   0          94m`
+
+>kubectl port-forward knobby-kiwi-go-app-k8s-67df99c5cf-8sg82  3333:3000
+and browsing it `http://localhost:3333/convert/hex-rgb/ffcc77`  this will return RGB equivalent `RGB(255, 204, 119)`
+
+To get the deployment list (specify namespace if deployment in specific namespace)
+>kubectl.exe get deployment
+
+>kubectl expose deployment knobby-kiwi-go-app-k8s --type=LoadBalancer --name=app-service
 
 
+# Step6
+access grafana `http://localhost:3000/login`
+login id `admin`
+password `prom-operator`
+
+you can add a custom dashboard and import/edit panel json and copy paste the file ./grafana-panel.json
+
+
+Notes: There are certain areas of improvement like building go application and later pushing it instead of including the go library in docker but for development this can be useful if we not sure what OS developer might be using.

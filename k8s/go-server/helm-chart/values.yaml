@@ -4,7 +4,7 @@
 replicaCount: 3
 
 image:
-  repository: codesta/golang-hex2rgb
+  repository: codesta/hex2rgb
   tag: latest
   pullPolicy: IfNotPresent
 

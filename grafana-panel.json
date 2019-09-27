@@ -1,0 +1,141 @@
+{
+    "type": "graph",
+    "title": "Total conversion performed per pod",
+    "gridPos": {
+      "x": 0,
+      "y": 0,
+      "w": 12,
+      "h": 9
+    },
+    "id": 2,
+    "datasource": "-- Mixed --",
+    "targets": [
+      {
+        "refId": "A",
+        "datasource": "Prometheus",
+        "expr": "go_app_hex2rgb_handler_requests_total"
+      }
+    ],
+    "options": {
+      "dataLinks": [
+        {
+          "url": "",
+          "title": ""
+        }
+      ]
+    },
+    "renderer": "flot",
+    "yaxes": [
+      {
+        "label": null,
+        "show": true,
+        "logBase": 1,
+        "min": null,
+        "max": null,
+        "format": "short"
+      },
+      {
+        "label": null,
+        "show": true,
+        "logBase": 1,
+        "min": null,
+        "max": null,
+        "format": "short"
+      }
+    ],
+    "xaxis": {
+      "show": true,
+      "mode": "time",
+      "name": null,
+      "values": [],
+      "buckets": null
+    },
+    "yaxis": {
+      "align": false,
+      "alignLevel": null
+    },
+    "lines": true,
+    "fill": 1,
+    "fillGradient": 0,
+    "linewidth": 1,
+    "dashes": false,
+    "dashLength": 10,
+    "spaceLength": 10,
+    "points": false,
+    "pointradius": 2,
+    "bars": false,
+    "stack": false,
+    "percentage": false,
+    "legend": {
+      "show": true,
+      "values": false,
+      "min": false,
+      "max": false,
+      "current": false,
+      "total": false,
+      "avg": false
+    },
+    "nullPointMode": "null",
+    "steppedLine": false,
+    "tooltip": {
+      "value_type": "individual",
+      "shared": false,
+      "sort": 0
+    },
+    "timeFrom": null,
+    "timeShift": null,
+    "aliasColors": {},
+    "seriesOverrides": [],
+    "thresholds": [
+      {
+        "value": 10,
+        "op": "gt",
+        "fill": true,
+        "line": true,
+        "colorMode": "critical"
+      }
+    ],
+    "timeRegions": [],
+    "interval": "",
+    "description": "Total conversion performed per pod",
+    "links": [],
+    "alert": {
+      "conditions": [
+        {
+          "type": "query",
+          "query": {
+            "params": [
+              "A",
+              "5m",
+              "now"
+            ]
+          },
+          "reducer": {
+            "type": "avg",
+            "params": []
+          },
+          "evaluator": {
+            "type": "gt",
+            "params": [
+              10
+            ]
+          },
+          "operator": {
+            "type": "and"
+          }
+        }
+      ],
+      "noDataState": "no_data",
+      "executionErrorState": "alerting",
+      "frequency": "1m",
+      "handler": 1,
+      "notifications": [],
+      "for": "5m",
+      "alertRuleTags": {
+        "app": "go",
+        "team": "web"
+      },
+      "name": "Total conversion performed per pod alert",
+      "message": "total numb er of requests is above 10"
+    }
+  }

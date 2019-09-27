@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+    name: {{ .Values.service.name }}-sm
+    labels:
+        app: {{ template "fullname" . }}
+        release: prometheus
+spec:
+    selector:
+        matchLabels:
+            app: {{ template "fullname" . }}
+        namespaceSelector:
+            matchNames:
+            - monitoring
+    endpoints:
+    - port: go-app-k8s
+      interval: 10s
+      honorLabels: true
