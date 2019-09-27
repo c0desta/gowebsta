@@ -1,0 +1,15 @@
+FROM golang:latest
+
+LABEL maintainer="tarunanand14@gmail.com"
+
+RUN go get -u github.com/gorilla/mux
+RUN go get github.com/lucasb-eyer/go-colorful
+
+
+EXPOSE 3000
+
+WORKDIR /var/www/
+
+COPY go-server/app-code/hex2rgb.go /var/www/hex2rgb.go
+
+ENTRYPOINT go run /var/www/hex2rgb.go
