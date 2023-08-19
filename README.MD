@@ -71,8 +71,10 @@ get list of pods
 kubectl get pods
 ```
 `knobby-kiwi-go-app-k8s-67df99c5cf-8sg82       1/1     Running   0          94m`
+```
+kubectl port-forward knobby-kiwi-go-app-k8s-67df99c5cf-8sg82  3333:3000
+```
 
->kubectl port-forward knobby-kiwi-go-app-k8s-67df99c5cf-8sg82  3333:3000
 and browsing it `http://localhost:3333/convert/hex-rgb/ffcc77`  this will return RGB equivalent `RGB(255, 204, 119)`
 
 To get the deployment list (specify namespace if deployment in specific namespace)
