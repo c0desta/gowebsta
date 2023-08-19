@@ -24,8 +24,9 @@ Make sure helm repo is updated and we deploy latest `stable/prometheus-operator`
 >helm repo up
 
 To install promethues 
->helm install stable/prometheus-operator --namespace monitoring --name prometheus
-
+```
+helm install stable/prometheus-operator --namespace monitoring --name prometheus
+```
 incase it throws error that one of the following mentioned cdr already exists add the `--set  prometheusOperator.createCustomResource=false` this will ignore the CRD installation.
 
 - prometheusrules.monitoring.coreos.com
